@@ -13,7 +13,7 @@
       
   // 3) What is the difference between call and apply?
 
-      //using call, subsequent arguments are passed in as they are but apply requires subsequent 
+      //using call(references 'this'), subsequent arguments are passed in as they are but apply(sets 'this') requires subsequent 
       //arguments(beyond the first) to be in an array.
 
   // 4) What does .bind do?
@@ -48,17 +48,19 @@ user.getUsername();
 // Write the function definitions which will make the following function invocations function properly.
 
 function Car(make, model, year) {
-    this.make,
-    this.model,
-    this.year
+    this.make = make,
+    this.model = model,
+    this.year = year
+    this.move = 0;
+  
 }
 
 var prius = new Car('Toyota', 'Prius', 2011);
 var mustang = new Car('Ford', 'Mustang', 2013);
 
-Car.prototype.move = 10;
 Car.prototype.moveCar = function() {
-    return this.move += 10;
+    this.moveCar += 10;
+    return this.move;
 }
   
 prius.moveCar(); //increments prius' move property by 10. Returns the new move property.
@@ -67,6 +69,7 @@ mustang.moveCar(); //increments mustang' move property by 10. Returns the new mo
 //Hint, you'll need to write a moveCar function which is added to every object that is being returned from the 
 //Car function. You'll also need to use the 'this' keyword properly in order to make sure you're invoking moveCar 
 //on the right object (prius vs mustang).
+
 
 
 
