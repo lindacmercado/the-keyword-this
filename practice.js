@@ -51,16 +51,14 @@ function Car(make, model, year) {
     this.make = make,
     this.model = model,
     this.year = year
-    this.move = 0;
-  
 }
 
 var prius = new Car('Toyota', 'Prius', 2011);
 var mustang = new Car('Ford', 'Mustang', 2013);
 
+Car.prototype.move = 0;
 Car.prototype.moveCar = function() {
-    this.moveCar += 10;
-    return this.move;
+    return this.move += 10;
 }
   
 prius.moveCar(); //increments prius' move property by 10. Returns the new move property.
